@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 00:43:54 by jshi              #+#    #+#             */
-/*   Updated: 2017/02/08 19:41:27 by jshi             ###   ########.fr       */
+/*   Updated: 2017/02/21 00:52:51 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,43 @@ static int	setup_mlx(t_env *env)
 	return (1);
 }
 
+static int	key_release_hook(int k, t_env *env)
+{
+	if (k == 13)
+	{
+		env->p.x += 0.2 * cos(env->ang_ver) * cos(env->ang_hor);
+		env->p.y += 0.2 * cos(env->ang_ver) * sin(env->ang_hor);
+		env->p.z += 0.2 * sin(env->ang_ver);
+		draw_map(env);
+	}
+	else if (k == 1)
+	{
+		env->p.x -= 0.2 * cos(env->ang_ver) * cos(env->ang_hor);
+		env->p.y -= 0.2 * cos(env->ang_ver) * sin(env->ang_hor);
+		env->p.z -= 0.2 * sin(env->ang_ver);
+		draw_map(env);
+	}
+	return (0);
+}
+
+// camera rotation
+// will fix later and add more features
+
+static int	motion_hook(int x, int y, t_env *env)
+{
+	if (x >= 0 && x < WIN_LEN && y >= 0 && y < WIN_WID)
+	{
+		env->ang_hor = 3.0 * M_PI * ((double)x / WIN_LEN - 0.5);
+		env->ang_ver = -3.0 * M_PI * ((double)y / WIN_WID - 0.5);
+	}
+	draw_map(env);
+	return (0);
+}
+
 static void	setup_hooks(t_env *env)
 {
-	// to do
+	mlx_key_hook(env->win, &key_release_hook, env);
+	mlx_hook(env->win, 6, 0, &motion_hook, env);
 	return ;
 }
 

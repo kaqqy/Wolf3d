@@ -6,13 +6,13 @@
 #    By: jshi <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/26 23:47:37 by jshi              #+#    #+#              #
-#    Updated: 2017/02/08 19:42:02 by jshi             ###   ########.fr        #
+#    Updated: 2017/02/15 23:20:48 by jshi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-FILES = main parse_map draw_map
+FILES = main parse_map draw_map find_inter
 SRC_FILES = $(addsuffix .c,$(FILES))
 OBJ_FILES = $(addsuffix .o,$(FILES))
 
