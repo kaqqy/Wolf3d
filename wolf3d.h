@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 15:34:14 by jshi              #+#    #+#             */
-/*   Updated: 2017/02/21 01:03:21 by jshi             ###   ########.fr       */
+/*   Updated: 2017/02/22 23:09:35 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define MIN_DIST_WALL 0.1
 # define NULL_PIX (t_pix){0, DBL_MAX}
 # define NUM_THREADS 16
+# define P_SPD 0.05
 
 typedef struct	s_vec
 {
@@ -41,6 +42,17 @@ typedef struct	s_pix
 	int			color;
 	double		dist;
 }				t_pix;
+
+typedef struct	s_img
+{
+	void		*img;
+	char		*data;
+	int			width;
+	int			height;
+	int			bpp;
+	int			sl;
+	int			endian;
+}				t_img;
 
 typedef struct	s_env
 {
@@ -59,6 +71,8 @@ typedef struct	s_env
 	double		ang_hor;
 	double		ang_ver;
 	pthread_t	threads[NUM_THREADS];
+	int			dir;
+	t_img		skybox;
 }				t_env;
 
 typedef struct	s_thrd

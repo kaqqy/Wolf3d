@@ -1,0 +1,5 @@
+rows columns floors
+(rows * floors) lines with (columns) space separated values
+0 = empty
+1 = block
+p = player

@@ -6,7 +6,7 @@
 #    By: jshi <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/21 09:52:26 by jshi              #+#    #+#              #
-#    Updated: 2017/02/07 16:19:51 by jshi             ###   ########.fr        #
+#    Updated: 2017/02/23 00:20:17 by jshi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC = $(addprefix $(LIBFT_DIR)/,$(addsuffix .c,$(LIBFT_FILES))) \
 
 OBJ = $(addsuffix .o,$(LIBFT_FILES)) $(addsuffix .o,$(PRINTF_FILES))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
 
 
 .PHONY: all clean fclean re

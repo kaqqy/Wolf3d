@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 15:45:36 by jshi              #+#    #+#             */
-/*   Updated: 2017/02/20 19:55:27 by jshi             ###   ########.fr       */
+/*   Updated: 2017/02/21 12:06:50 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static int	parse_line(t_env *env, char **ss, int i, int j)
 			if (env->p.x != 0)
 				return (0);
 			env->p = (t_vec){k + 0.5, j + 0.5, i + 0.5};
-			env->ang_hor = 0;
-			env->ang_ver = 0;
 		}
 	}
 	return (1);
@@ -100,11 +98,10 @@ static int	parse_file(t_env *env, int fd)
 	return (1);
 }
 
-int		parse_map(t_env *env, char *fn)
+int			parse_map(t_env *env, char *fn)
 {
 	int		fd;
 
-	env->p.x = 0.0;
 	if ((fd = open(fn, O_RDONLY)) < 0)
 		return (0);
 	if (!parse_dimensions(env, fd))
